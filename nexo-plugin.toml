@@ -1,0 +1,36 @@
+manifest_version = 2
+
+[plugin]
+id               = "google_calendar"
+version          = "0.1.0"
+name             = "Google Calendar Poller"
+description      = "Google Calendar v3 events incremental sync via syncToken."
+min_nexo_version = ">=0.2.0"
+
+[plugin.entrypoint]
+command = "nexo-poller-google-calendar"
+
+[plugin.requires]
+nexo_capabilities = ["broker"]
+
+[plugin.capabilities.broker]
+subscribe = [
+    "plugin.poller.google_calendar.tick",
+    "_inbox.>",
+]
+publish = [
+    "daemon.rpc.google_calendar",
+    "plugin.outbound.whatsapp.>",
+    "plugin.outbound.telegram.>",
+    "plugin.outbound.email.>",
+    "_inbox.>",
+]
+
+[plugin.poller]
+kinds                = ["google_calendar"]
+broker_topic_prefix  = "plugin.poller.google_calendar"
+lifecycle            = "long_lived"
+# `max_concurrent_ticks = 1` serializes per kind so the OAuth
+# refresh token file isn't fought over by concurrent ticks.
+max_concurrent_ticks = 1
+tick_timeout_secs    = 120
