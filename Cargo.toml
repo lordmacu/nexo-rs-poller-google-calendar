@@ -24,10 +24,10 @@ name = "nexo-poller-google-calendar"
 path = "src/main.rs"
 
 [dependencies]
-nexo-microapp-sdk = { path = "../proyecto/crates/microapp-sdk", features = ["plugin", "poller"] }
-nexo-poller       = { path = "../proyecto/crates/poller" }
-nexo-broker       = { path = "../proyecto/crates/broker" }
-nexo-config       = { path = "../proyecto/crates/config" }
+nexo-microapp-sdk = { version = "0.1.20", features = ["plugin", "poller"] }
+nexo-poller       = "0.2.0"
+nexo-broker       = "0.1.5"
+nexo-config       = "0.1.9"
 # OAuth + Calendar API client. Same lib the in-tree poller used
 # before Phase 96 extraction. The plugin runs the OAuth refresh
 # itself (subprocess holds the token file via fcntl lock) using the
