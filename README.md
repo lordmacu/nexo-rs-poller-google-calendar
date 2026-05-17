@@ -48,8 +48,9 @@ jobs:
 | OAuth refresh via `nexo-plugin-google` | ✅ |
 | Calendar fetch + syncToken | ✅ |
 | Tests | ✅ 9/9 (config + template + urlencode + error classify) |
-| crates.io publish | ⬜ pending Phase 96 release wave |
-| CI workflow | ⬜ pending |
+| CI workflow | ✅ (`.github/workflows/ci.yml`) |
+| Release workflow | ✅ (`.github/workflows/release.yml`, tag-driven) |
+| crates.io publish | ⬜ pending Phase 96 release wave (operator action) |
 
 ## License
 
